@@ -6,8 +6,8 @@ import * as schema from './schema';
 
 @Injectable()
 export class DrizzleService implements OnModuleInit, OnModuleDestroy {
-  public db: ReturnType<typeof drizzle>;
-  private pool: Pool;
+  public db!: ReturnType<typeof drizzle>;
+  private pool!: Pool;
 
   onModuleInit() {
     this.pool = new Pool({
