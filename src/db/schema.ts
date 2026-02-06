@@ -87,9 +87,9 @@ export const users = pgTable(
   'users',
   {
     id: uuid('id').primaryKey().defaultRandom(),
-    tenantId: uuid('tenant_id')
-      .notNull()
-      .references(() => tenants.id, { onDelete: 'cascade' }),
+    tenantId: uuid('tenant_id').references(() => tenants.id, {
+      onDelete: 'cascade',
+    }),
 
     // Credenciais
     email: varchar('email', { length: 255 }).notNull(),
@@ -342,9 +342,9 @@ export const tokens = pgTable(
     userId: uuid('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    tenantId: uuid('tenant_id')
-      .notNull()
-      .references(() => tenants.id, { onDelete: 'cascade' }),
+    tenantId: uuid('tenant_id').references(() => tenants.id, {
+      onDelete: 'cascade',
+    }),
 
     // Token
     token: varchar('token', { length: 255 }).notNull().unique(),
@@ -435,9 +435,9 @@ export const sessions = pgTable(
     userId: uuid('user_id')
       .notNull()
       .references(() => users.id, { onDelete: 'cascade' }),
-    tenantId: uuid('tenant_id')
-      .notNull()
-      .references(() => tenants.id, { onDelete: 'cascade' }),
+    tenantId: uuid('tenant_id').references(() => tenants.id, {
+      onDelete: 'cascade',
+    }),
 
     // Session data
     sessionToken: varchar('session_token', { length: 255 }).notNull().unique(),

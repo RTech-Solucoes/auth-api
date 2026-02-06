@@ -1,0 +1,1 @@
+ALTER TABLE "sessions" ALTER COLUMN "tenant_id" DROP NOT NULL;
